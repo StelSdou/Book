@@ -63,7 +63,7 @@ function goPrev() {
         pF.classList.remove("flipped");
         pF.style.zIndex = 1;
         break;
-      case currentLocation:
+      case currentLocation + 1:
         document
           .querySelector("#p" + currentLocation)
           .classList.remove("flipped");
