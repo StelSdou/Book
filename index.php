@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
     <script src="https://unpkg.com/pdf-lib"></script>
-    <script src="pdfData.js"></script>
     <script
-      src="https://kit.fontawesome.com/22e77351d3.js"
-      crossorigin="anonymous"
+    src="https://kit.fontawesome.com/22e77351d3.js"
+    crossorigin="anonymous"
     ></script>
     <title>Book</title>
   </head>
@@ -22,24 +21,8 @@
     <div id="book" class="book">
       <!-- Paper -->
       <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "data";
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-
-        $name = "demo";
-
-        $sql = "SELECT `sum` FROM pages WHERE name = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $name);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
-        $number = $row["sum"];
-
-        
+        include('myData.php');
+        $number = date('data');
         for ($i = 1; $i < $number; $i++) {
           echo'
           <div id="p'.$i.'" class="paper">
@@ -88,12 +71,13 @@
           }
         </style>
     </div>
-
+    
     <button id="nextBtn">
       <i class="fa-solid fa-arrow-right"></i>
     </button>
 
-    <script src="script.js"></script>
+    <script src="myScript.js"></script>
+    <script src="pdfData.js"></script>
     
   </body>
 </html>

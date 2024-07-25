@@ -7,20 +7,27 @@ async function countPage(file) {
   send(pageCount);
 }
 
-async function send(num) {
-  fetch("data.php", {
+function send(num) {
+  const data = {
+    name: "demo",
+    data: num,
+  };
+
+  fetch("myData.php", {
     method: "POST",
     headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
+      "Content-Type": "application/json",
     },
-    body: new URLSearchParams({
-      number: num,
-    }),
+    body: JSON.stringify(data),
   })
     .then((response) => response.text())
+    .then((result) => {
+      console.log("Success:", result);
+    })
     .catch((error) => {
-      console.error("Σφάλμα:", error);
+      console.error("Error:", error);
     });
 }
+
 const file = "data/new.pdf";
 countPage(file);

@@ -1,3 +1,5 @@
+console.log("ok");
+
 let preBtn = document.querySelector("#prevBtn");
 let nextBtn = document.querySelector("#nextBtn");
 let book = document.querySelector("#book");
