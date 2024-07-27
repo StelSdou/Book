@@ -22,8 +22,11 @@
     <div id="book" class="book">
       <!-- Paper -->
       <?php
+        echo '<script>console.log(document.cookie)</script>';
         include('myData.php');
-        $number = date('data');
+        session_start();
+        echo '<script>console.log("index: " + '. $_SESSION["num"] .')</script>';
+        $number = $_SESSION["num"];
         for ($i = 1; $i < $number; $i++) {
           echo'
           <div id="p'.$i.'" class="paper">
@@ -44,7 +47,7 @@
         </div>
         <style>
           #p'. $i .' {
-            z-index: '. $number + 1 - $i .';
+            z-index: '. $number - $i + 1 .';
           }
         </style>
         ';

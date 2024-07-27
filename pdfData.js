@@ -3,11 +3,12 @@ async function countPage(file) {
   const pdfDoc = await PDFLib.PDFDocument.load(pdfBytes);
   const pageCount = pdfDoc.getPageCount();
   window.getNum = pageCount;
-  console.log(`Number of pages: ${pageCount}`);
   send(pageCount);
 }
 
 function send(num) {
+  document.cookie = num;
+  console.log("pdfS: " + document.cookie.slice(0, 2));
   const data = {
     name: "demo",
     data: num,
@@ -22,7 +23,7 @@ function send(num) {
   })
     .then((response) => response.text())
     .then((result) => {
-      console.log("Success:", result);
+      console.log("phpD:", result);
     })
     .catch((error) => {
       console.error("Error:", error);

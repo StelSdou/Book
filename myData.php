@@ -10,6 +10,9 @@
             die('Error decoding JSON');
         }
 
-        echo ' Data successfully ' . $data["data"];
+        session_start();
+        $_SESSION['num'] = $data['data'];
+        
+        echo $data["data"];
     }
 ?>

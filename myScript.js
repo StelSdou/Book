@@ -1,5 +1,3 @@
-console.log("ok");
-
 let preBtn = document.querySelector("#prevBtn");
 let nextBtn = document.querySelector("#nextBtn");
 let book = document.querySelector("#book");
@@ -9,16 +7,12 @@ let pF = document.querySelector("#pF");
 
 nextBtn.addEventListener("click", goNext);
 preBtn.addEventListener("click", goPrev);
-
-//------------------------------
 let numOfPage;
-if (window.getNum !== "undefined") {
-  numOfPage = 4;
-} else {
-  numOfPage = window.getNum;
-}
-console.log(numOfPage);
-//-------------------------------
+if (document.cookie[1] == ";") numOfPage = document.cookie[0];
+else if (document.cookie[2] == ";") numOfPage = document.cookie.slice(0, 2);
+else numOfPage = document.cookie.slice(0, 3);
+numOfPage = parseInt(numOfPage, 10);
+console.log("MyS: " + numOfPage);
 
 let currentLocation = 1;
 let maxLocation = numOfPage + 1;
@@ -46,7 +40,7 @@ function goNext() {
         break;
       case numOfPage:
         pF.classList.add("flipped");
-        pF.style.zIndex = currentLocation;
+        pF.style.zIndex = numOfPage;
         closeBook();
         break;
       case currentLocation:
@@ -58,7 +52,6 @@ function goNext() {
         throw new Error("!");
     }
     currentLocation++;
-    console.log(currentLocation);
   }
 }
 function goPrev() {
@@ -85,6 +78,5 @@ function goPrev() {
         throw new Error("!");
     }
     currentLocation--;
-    console.log(currentLocation);
   }
 }
