@@ -9,6 +9,7 @@
     src="https://kit.fontawesome.com/22e77351d3.js"
     crossorigin="anonymous"
     ></script>
+    <script src="pdfData.js" defer></script>
     <title>Book</title>
   </head>
   <body>
@@ -43,7 +44,7 @@
         </div>
         <style>
           #p'. $i .' {
-            z-index: '. $number - $i .';
+            z-index: '. $number + 1 - $i .';
           }
         </style>
         ';
@@ -67,7 +68,7 @@
         </div>
         <style>
           #pF {
-            z-index:0;
+            z-index:1;
           }
         </style>
     </div>
@@ -76,8 +77,7 @@
       <i class="fa-solid fa-arrow-right"></i>
     </button>
 
-    <script src="myScript.js"></script>
-    <script src="pdfData.js"></script>
+    <script src="myScript.js" async></script>
     
   </body>
 </html>

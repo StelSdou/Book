@@ -10,8 +10,16 @@ let pF = document.querySelector("#pF");
 nextBtn.addEventListener("click", goNext);
 preBtn.addEventListener("click", goPrev);
 
-let numOfPage = window.getNum;
+//------------------------------
+let numOfPage;
+if (window.getNum !== "undefined") {
+  numOfPage = 4;
+} else {
+  numOfPage = window.getNum;
+}
 console.log(numOfPage);
+//-------------------------------
+
 let currentLocation = 1;
 let maxLocation = numOfPage + 1;
 
@@ -38,18 +46,19 @@ function goNext() {
         break;
       case numOfPage:
         pF.classList.add("flipped");
-        pF.style.zIndex = numOfPage;
+        pF.style.zIndex = currentLocation;
         closeBook();
         break;
       case currentLocation:
         document.querySelector("#p" + currentLocation).classList.add("flipped");
         document.querySelector("#p" + currentLocation).style.zIndex =
-          currentLocation;
+          currentLocation + 1;
         break;
       default:
         throw new Error("!");
     }
     currentLocation++;
+    console.log(currentLocation);
   }
 }
 function goPrev() {
@@ -65,16 +74,17 @@ function goPrev() {
         pF.classList.remove("flipped");
         pF.style.zIndex = 1;
         break;
-      case currentLocation + 1:
+      case currentLocation:
         document
-          .querySelector("#p" + currentLocation)
+          .querySelector("#p" + (currentLocation - 1))
           .classList.remove("flipped");
-        document.querySelector("#p" + currentLocation).style.zIndex =
-          currentLocation - 1;
+        document.querySelector("#p" + (currentLocation - 1)).style.zIndex =
+          maxLocation + 1 - currentLocation;
         break;
       default:
         throw new Error("!");
     }
     currentLocation--;
+    console.log(currentLocation);
   }
 }

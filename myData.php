@@ -1,5 +1,4 @@
 <?php
-    echo 'PHP is working';
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $jsonData = file_get_contents('php://input');
@@ -12,8 +11,5 @@
         }
 
         echo ' Data successfully ' . $data["data"];
-    }
-    else {
-        echo 'false';
     }
 ?>
